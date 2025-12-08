@@ -5,9 +5,11 @@ resource "azurerm_cognitive_account" "lang" {
 
   kind     = "CognitiveServices"
   sku_name = "S0"
-
-  #forces Azure to generate a private-only endpoint
+  
+ #forces Azure to generate a private-only endpoint
   public_network_access_enabled = false
+
+  custom_subdomain_name = "lang-${var.resource_group_name}"
 
   tags = {
     project = "clco"
