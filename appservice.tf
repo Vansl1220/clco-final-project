@@ -4,7 +4,7 @@ resource "azurerm_service_plan" "appplan" {
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 
-  os_type = "Linux"
+  os_type  = "Linux"
   sku_name = "B1"
 }
 
@@ -21,12 +21,17 @@ resource "azurerm_linux_web_app" "webapp" {
     application_stack {
       python_version = "3.9"
     }
+
+    app_command_line = "gunicorn --bind=0.0.0.0 --timeout 600 backend:app"
   }
 
   app_settings = {
     "WEBSITE_RUN_FROM_PACKAGE" = "1"
 
-    "AI_ENDPOINT" = azurerm_cognitive_account.lang.endpoint
-    "AI_KEY"      = azurerm_cognitive_account.lang.primary_access_key
+    #"AI_ENDPOINT" = azurerm_cognitive_account.lang.endpoint
+    #"AI_KEY"      = azurerm_cognitive_account.lang.primary_access_key
+
+    "AZ_ENDPOINT" = azurerm_cognitive_account.lang.endpoint
+    "AZ_KEY"      = azurerm_cognitive_account.lang.primary_access_key
   }
 }

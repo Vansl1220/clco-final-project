@@ -9,7 +9,7 @@ resource "azurerm_subnet" "web" {
     name = "webapp-delegation"
 
     service_delegation { //must-have per assignment
-      name    = "Microsoft.Web/serverFarms"
+      name = "Microsoft.Web/serverFarms"
       actions = [
         "Microsoft.Network/virtualNetworks/subnets/action"
       ]
@@ -22,6 +22,9 @@ resource "azurerm_subnet" "ai" {
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = ["10.0.2.0/24"]
+
+  private_link_service_network_policies_enabled = false
+
 }
 // hosts VM1+VM2
 resource "azurerm_subnet" "vm" {
