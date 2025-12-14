@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import requests
 import os
 
@@ -66,7 +66,7 @@ def sentiment():
 # -------------------------------
 @app.route("/")
 def home():
-    return "Backend is running."
+    return render_template("index.html")
 
 # -------------------------------
 # Run Backend (Local Only)
