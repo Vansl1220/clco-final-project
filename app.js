@@ -80,8 +80,9 @@ async function analyzeSentiment() {
         return;
     }
 
+    const confidence = (data.scores[data.sentiment] * 100).toFixed(1);
     document.getElementById("sentimentResult").innerText =
-        `Sentiment: ${data.sentiment}, Confidence: ${data.confidence}`;
+        `Sentiment: ${data.sentiment.toUpperCase()} (${confidence}% confidence)`;
 
     /*
     if (!text) {
