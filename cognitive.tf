@@ -6,8 +6,8 @@ resource "azurerm_cognitive_account" "lang" {
   kind     = "TextAnalytics"
   sku_name = "S"
 
-  #forces Azure to generate a private-only endpoint
-  public_network_access_enabled = false
+  # Allow public access for sentiment analysis
+  public_network_access_enabled = true
 
   custom_subdomain_name = "lang-${var.resource_group_name}"
 

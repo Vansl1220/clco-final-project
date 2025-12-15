@@ -1,9 +1,7 @@
-# variables.tf
-
 variable "resource_group_name" {
   description = "Name for the Azure Resource Group"
   type        = string
-  default     = "terraform-project"
+  default     = "clco-currency-final"
 }
 
 variable "location" {
@@ -16,6 +14,12 @@ variable "location" {
 variable "storage_account_name" {
   description = "Name for the Azure storrage account"
   type        = string
+}
+
+variable "app_service_name" {
+  description = "Name for the Azure App Service"
+  type        = string
+  default     = "webapp-rg-clco-currency-final"
 }
 
 variable "replication_type" {
