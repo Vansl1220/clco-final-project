@@ -8,7 +8,6 @@ variable "location" {
   description = "Azure region norwayeast"
   type        = string
   default     = "norwayeast"
-
 }
 
 variable "storage_account_name" {
